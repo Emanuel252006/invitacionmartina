@@ -253,6 +253,36 @@ body {
     box-shadow: 0 4px 15px rgba(101, 67, 33, 0.4);
 }
 
+.music-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b6f47 0%, #654321 100%);
+    border: 2px solid #654321;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(101, 67, 33, 0.3);
+    transition: all 0.3s ease;
+    z-index: 10;
+    padding: 0;
+}
+
+.music-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(101, 67, 33, 0.4);
+}
+
+.music-button:active {
+    transform: scale(0.95);
+}
+
 .footer-decoration {
     position: absolute;
     bottom: -15px;
@@ -377,6 +407,14 @@ body {
     
     .footer-decoration {
         bottom: -12px;
+    }
+    
+    .music-button {
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
     }
 }
 

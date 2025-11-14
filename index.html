@@ -56,6 +56,10 @@
                 </div>
             </div>
             
+            <button id="music-toggle" class="music-button" aria-label="Reproducir/Pausar música">
+                <span id="music-icon">🎵</span>
+            </button>
+            
             <div class="footer-decoration">
                 <div class="leaf leaf-1">✨</div>
                 <div class="leaf leaf-2">✨</div>
@@ -63,6 +67,48 @@
             </div>
         </div>
     </div>
+    
+    <audio id="background-music" autoplay loop>
+        <source src="musica/Mientras Me Sigas Necesitando.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    
+    <script>
+        const audio = document.getElementById('background-music');
+        const musicToggle = document.getElementById('music-toggle');
+        const musicIcon = document.getElementById('music-icon');
+        
+        audio.volume = 0.5; // Volumen al 50%
+        
+        // Intentar reproducir la música automáticamente
+        window.addEventListener('load', function() {
+            audio.play().catch(function(error) {
+                // Si falla la reproducción automática (política del navegador),
+                // el usuario tendrá que interactuar primero
+                console.log('La reproducción automática fue bloqueada:', error);
+            });
+        });
+        
+        // Control del botón de música
+        musicToggle.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.textContent = '🎵';
+            } else {
+                audio.pause();
+                musicIcon.textContent = '🔇';
+            }
+        });
+        
+        // Actualizar el icono según el estado del audio
+        audio.addEventListener('play', function() {
+            musicIcon.textContent = '🎵';
+        });
+        
+        audio.addEventListener('pause', function() {
+            musicIcon.textContent = '🔇';
+        });
+    </script>
 </body>
 </html>
 
