@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    overflow-y: auto;
 }
 
 .invitation-container {
@@ -23,7 +24,7 @@ body {
 .invitation-card {
     background: linear-gradient(180deg, #faf8f3 0%, #f5f0e8 100%);
     border-radius: 20px;
-    padding: 60px 40px;
+    padding: 50px 40px 50px 40px;
     box-shadow: 0 20px 60px rgba(101, 67, 33, 0.3);
     position: relative;
     overflow: hidden;
@@ -87,7 +88,7 @@ body {
 .title {
     font-size: 2.5rem;
     color: #654321;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-weight: 300;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -95,8 +96,8 @@ body {
 }
 
 .name-section {
-    margin: 40px 0;
-    padding: 30px 0;
+    margin: 25px 0;
+    padding: 20px 0;
     border-top: 2px solid #8b6f47;
     border-bottom: 2px solid #8b6f47;
     position: relative;
@@ -129,7 +130,7 @@ body {
 }
 
 .date-section {
-    margin: 35px 0;
+    margin: 25px 0;
 }
 
 .date-label {
@@ -140,10 +141,10 @@ body {
 }
 
 .details-section {
-    margin: 50px 0;
+    margin: 30px 0;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 
 .event-detail {
@@ -151,7 +152,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    padding: 25px;
+    padding: 20px;
     background: linear-gradient(135deg, rgba(212, 196, 168, 0.3) 0%, rgba(245, 230, 211, 0.3) 100%);
     border-radius: 15px;
     border: 2px solid #c4b59a;
@@ -205,8 +206,8 @@ body {
 }
 
 .footer-message {
-    margin-top: 40px;
-    padding-top: 30px;
+    margin-top: 25px;
+    padding-top: 20px;
     border-top: 1px solid #c4b59a;
 }
 
@@ -219,20 +220,20 @@ body {
 }
 
 .button-container {
-    margin-top: 40px;
-    padding-top: 30px;
+    margin-top: 20px;
+    padding-top: 15px;
     display: flex;
     justify-content: center;
 }
 
 .confirm-button {
     display: inline-block;
-    padding: 18px 40px;
+    padding: 15px 35px;
     background: linear-gradient(135deg, #8b6f47 0%, #654321 100%);
     color: #ffffff;
     text-decoration: none;
     border-radius: 50px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: 1.5px;
     box-shadow: 0 6px 20px rgba(101, 67, 33, 0.4);
@@ -254,7 +255,7 @@ body {
 
 .footer-decoration {
     position: absolute;
-    bottom: -20px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -290,35 +291,92 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        overflow-y: auto;
+    }
+    
     .invitation-card {
-        padding: 40px 25px;
+        padding: 35px 20px 40px 20px;
     }
     
     .title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
     }
     
     .name {
-        font-size: 3rem;
+        font-size: 2.5rem;
+    }
+    
+    .name-section {
+        margin: 20px 0;
+        padding: 15px 0;
+    }
+    
+    .date-section {
+        margin: 20px 0;
     }
     
     .date-label {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+    }
+    
+    .details-section {
+        margin: 25px 0;
+        gap: 15px;
     }
     
     .event-detail {
         flex-direction: column;
         text-align: center;
+        padding: 15px;
+    }
+    
+    .icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
     }
     
     .event-info {
         text-align: center;
     }
     
-    .confirm-button {
-        padding: 15px 30px;
+    .event-title {
+        font-size: 1.1rem;
+    }
+    
+    .event-time {
+        font-size: 1.3rem;
+    }
+    
+    .event-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .footer-message {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+    
+    .footer-message p {
         font-size: 1rem;
+    }
+    
+    .button-container {
+        margin-top: 15px;
+        padding-top: 10px;
+    }
+    
+    .confirm-button {
+        padding: 12px 25px;
+        font-size: 0.95rem;
         letter-spacing: 1px;
+    }
+    
+    .footer-decoration {
+        bottom: -12px;
     }
 }
 
