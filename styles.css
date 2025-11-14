@@ -286,6 +286,23 @@ body {
     box-shadow: 0 4px 10px rgba(101, 67, 33, 0.3);
 }
 
+.icon svg {
+    width: 35px;
+    height: 35px;
+    color: #ffffff;
+    stroke: #ffffff;
+}
+
+.icon-church svg {
+    width: 38px;
+    height: 38px;
+}
+
+.icon-celebration svg {
+    width: 36px;
+    height: 36px;
+}
+
 .event-info {
     text-align: left;
 }
@@ -447,6 +464,21 @@ body {
         width: 60px;
         height: 60px;
         font-size: 2rem;
+    }
+    
+    .icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .icon-church svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .icon-celebration svg {
+        width: 30px;
+        height: 30px;
     }
     
     .event-info {
