@@ -218,6 +218,40 @@ body {
     letter-spacing: 0.5px;
 }
 
+.button-container {
+    margin-top: 40px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.confirm-button {
+    display: inline-block;
+    padding: 18px 40px;
+    background: linear-gradient(135deg, #8b6f47 0%, #654321 100%);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    box-shadow: 0 6px 20px rgba(101, 67, 33, 0.4);
+    transition: all 0.3s ease;
+    border: 2px solid #654321;
+    text-transform: uppercase;
+}
+
+.confirm-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(101, 67, 33, 0.5);
+    background: linear-gradient(135deg, #654321 0%, #8b6f47 100%);
+}
+
+.confirm-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(101, 67, 33, 0.4);
+}
+
 .footer-decoration {
     position: absolute;
     bottom: -20px;
@@ -279,6 +313,12 @@ body {
     
     .event-info {
         text-align: center;
+    }
+    
+    .confirm-button {
+        padding: 15px 30px;
+        font-size: 1rem;
+        letter-spacing: 1px;
     }
 }
 
