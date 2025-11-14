@@ -114,25 +114,40 @@
             currentTimeSpan.textContent = formatTime(audio.currentTime);
         });
         
-        // Reproducir automáticamente al cargar
+        // Función para intentar reproducir automáticamente
         function tryAutoPlay() {
-            const playPromise = audio.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(function() {
-                    // Reproducción iniciada automáticamente
-                    musicIcon.textContent = '⏸';
-                }).catch(function(error) {
-                    // Si falla, el usuario tendrá que hacer clic
-                    musicIcon.textContent = '▶';
-                });
+            if (audio.paused) {
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(function() {
+                        // Reproducción iniciada automáticamente
+                        musicIcon.textContent = '⏸';
+                    }).catch(function(error) {
+                        // Si falla, mostrar botón de play
+                        musicIcon.textContent = '▶';
+                    });
+                }
             }
         }
         
-        // Intentar reproducir cuando se carga la página
+        // Intentar reproducir inmediatamente cuando el DOM está listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', tryAutoPlay);
+        } else {
+            tryAutoPlay();
+        }
+        
+        // Intentar reproducir cuando el audio está listo para reproducirse
+        audio.addEventListener('canplay', tryAutoPlay);
+        
+        // Intentar reproducir cuando se carga completamente la página
         window.addEventListener('load', tryAutoPlay);
         
-        // Intentar reproducir cuando el usuario interactúa con la página
+        // Intentar reproducir cuando el audio tiene datos suficientes
+        audio.addEventListener('canplaythrough', tryAutoPlay);
+        
+        // Intentar reproducir cuando el usuario interactúa con la página (como respaldo)
         document.addEventListener('click', function() {
             if (audio.paused) {
                 tryAutoPlay();
@@ -140,6 +155,13 @@
         }, { once: true });
         
         document.addEventListener('touchstart', function() {
+            if (audio.paused) {
+                tryAutoPlay();
+            }
+        }, { once: true });
+        
+        // Intentar reproducir cuando el usuario mueve el mouse (como respaldo)
+        document.addEventListener('mousemove', function() {
             if (audio.paused) {
                 tryAutoPlay();
             }
