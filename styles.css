@@ -192,6 +192,16 @@ body {
     color: #8b6f47;
     font-weight: 600;
     letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.event-subtitle {
+    font-size: 1rem;
+    color: #654321;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
 }
 
 .footer-message {
