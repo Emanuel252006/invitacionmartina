@@ -287,20 +287,20 @@ body {
 }
 
 .icon svg {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     color: #ffffff;
     stroke: #ffffff;
 }
 
 .icon-church svg {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
 }
 
 .icon-celebration svg {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
 }
 
 .event-info {
@@ -467,18 +467,18 @@ body {
     }
     
     .icon svg {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
     }
     
     .icon-church svg {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
     }
     
     .icon-celebration svg {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
     }
     
     .event-info {
