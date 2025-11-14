@@ -46,11 +46,7 @@
                 
                 <div class="details-section">
                     <div class="event-detail">
-                        <div class="icon icon-church">
-                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L3 7V10H5V20H9V14H15V20H19V10H21V7L12 2Z"/>
-                            </svg>
-                        </div>
+                        <div class="icon">⛪</div>
                         <div class="event-info">
                             <p class="event-title">Santa Misa</p>
                             <p class="event-time">10:00 AM</p>
@@ -59,14 +55,7 @@
                     </div>
                     
                     <div class="event-detail">
-                        <div class="icon icon-celebration">
-                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
-                                <path d="M8 20L12 18L16 20"/>
-                                <path d="M6 16L8 20"/>
-                                <path d="M18 16L16 20"/>
-                            </svg>
-                        </div>
+                        <div class="icon">🎉</div>
                         <div class="event-info">
                             <p class="event-title">Celebración</p>
                             <p class="event-time">4:00 PM</p>
@@ -93,7 +82,7 @@
         </div>
     </div>
     
-    <audio id="background-music" loop preload="auto">
+    <audio id="background-music" autoplay loop preload="auto">
         <source src="musica/Mientras Me Sigas Necesitando.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
@@ -128,81 +117,54 @@
         // Función para intentar reproducir automáticamente
         function tryAutoPlay() {
             if (audio.paused) {
-                // Intentar reproducir inmediatamente
                 const playPromise = audio.play();
                 
                 if (playPromise !== undefined) {
                     playPromise.then(function() {
-                        // Reproducción iniciada automáticamente
                         musicIcon.textContent = '⏸';
                     }).catch(function(error) {
-                        // Si falla, mostrar botón de play
                         musicIcon.textContent = '▶';
                     });
                 }
             }
         }
         
-        // Estrategia agresiva: intentar reproducir en múltiples momentos
-        // Intentar inmediatamente
-        setTimeout(tryAutoPlay, 100);
+        // Intentar reproducir inmediatamente
+        tryAutoPlay();
         
-        // Cuando el DOM está listo
+        // Intentar cuando el audio está listo
+        audio.addEventListener('canplay', tryAutoPlay);
+        audio.addEventListener('canplaythrough', tryAutoPlay);
+        audio.addEventListener('loadeddata', tryAutoPlay);
+        
+        // Intentar cuando la página carga
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(tryAutoPlay, 150);
-            });
-        } else {
-            setTimeout(tryAutoPlay, 150);
+            document.addEventListener('DOMContentLoaded', tryAutoPlay);
         }
+        window.addEventListener('load', tryAutoPlay);
         
-        // Cuando la página carga completamente
-        window.addEventListener('load', function() {
-            setTimeout(tryAutoPlay, 300);
-        });
-        
-        // Cuando el audio puede reproducirse
-        audio.addEventListener('canplay', function() {
-            setTimeout(tryAutoPlay, 100);
-        });
-        
-        // Cuando el audio tiene datos suficientes
-        audio.addEventListener('canplaythrough', function() {
-            setTimeout(tryAutoPlay, 100);
-        });
-        
-        // Cuando el audio está cargado
-        audio.addEventListener('loadeddata', function() {
-            setTimeout(tryAutoPlay, 100);
-        });
-        
-        // Intentar cuando el usuario interactúa (como respaldo)
-        let userInteracted = false;
-        function handleUserInteraction() {
-            if (!userInteracted && audio.paused) {
-                userInteracted = true;
+        // Intentar cuando el usuario interactúa (respaldo)
+        function handleInteraction() {
+            if (audio.paused) {
                 tryAutoPlay();
             }
         }
         
-        // Múltiples eventos de interacción
-        document.addEventListener('click', handleUserInteraction, { once: true });
-        document.addEventListener('touchstart', handleUserInteraction, { once: true });
-        document.addEventListener('mousemove', handleUserInteraction, { once: true });
-        document.addEventListener('keydown', handleUserInteraction, { once: true });
-        document.addEventListener('scroll', handleUserInteraction, { once: true });
+        document.addEventListener('click', handleInteraction, { once: true });
+        document.addEventListener('touchstart', handleInteraction, { once: true });
+        document.addEventListener('mousemove', handleInteraction, { once: true });
         
-        // Intentar reproducir cada segundo hasta que funcione (máximo 10 intentos)
+        // Intentar cada 500ms hasta que funcione (máximo 20 intentos = 10 segundos)
         let attempts = 0;
-        const maxAttempts = 10;
+        const maxAttempts = 20;
         const autoPlayInterval = setInterval(function() {
             if (audio.paused && attempts < maxAttempts) {
                 attempts++;
                 tryAutoPlay();
-            } else if (!audio.paused || attempts >= maxAttempts) {
+            } else {
                 clearInterval(autoPlayInterval);
             }
-        }, 1000);
+        }, 500);
         
         // Control del botón play/pause
         musicToggle.addEventListener('click', function() {
