@@ -307,6 +307,15 @@ body {
     margin-bottom: 5px;
 }
 
+.event-location {
+    font-size: 1rem;
+    color: #654321;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .event-subtitle {
     font-size: 1rem;
     color: #654321;
@@ -461,6 +470,10 @@ body {
     
     .event-time {
         font-size: 1.3rem;
+    }
+    
+    .event-location {
+        font-size: 0.9rem;
     }
     
     .event-subtitle {
